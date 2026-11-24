@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#170f24"><title>LOVEORA — Meet. Chat. Connect.</title>
+<style>
+:root{--bg:#130d1d;--panel:#21172d;--panel2:#2b1d38;--pink:#ff75b5;--muted:#b9a9c5;--gold:#ffd782}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#fff;font:15px/1.5 system-ui,Arial,sans-serif}
+button{cursor:pointer;border:0;border-radius:13px;padding:11px 15px;font:inherit;font-weight:700;background:var(--pink);color:#281326}
+.top{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 max(18px,calc((100% - 1080px)/2));background:#1b1325;border-bottom:1px solid #382744;position:sticky;top:0;z-index:3}
+.logo{font-weight:900;letter-spacing:1px;font-size:23px;color:var(--pink)}.wallet{background:#382944;color:var(--gold);border-radius:30px;padding:9px 14px;font-weight:800}
+.wrap{max-width:1080px;margin:auto;padding:24px 18px 100px}.hero{border-radius:24px;padding:34px 28px;background:radial-gradient(circle at 85% 20%,#e45b9b88,transparent 32%),linear-gradient(120deg,#47234f,#8e376e);min-height:210px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.05;margin:0 0 12px}.hero p{color:#f4ddea;max-width:520px}.eyebrow{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#ffd6e9;font-weight:800}
+h2{font-size:22px;margin:30px 0 5px}.muted{color:var(--muted);margin-top:4px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-top:18px}
+.card{background:var(--panel);border:1px solid #392844;border-radius:18px;overflow:hidden}.avatar{height:155px;display:grid;place-items:center;font-size:55px;background:linear-gradient(140deg,#a64c87,#4e3b83)}
+.info{padding:14px}.city{color:var(--muted);font-size:13px;margin:3px 0 12px}.actions{display:flex;gap:7px}.actions button{flex:1;padding:9px 7px;font-size:13px}.secondary{background:#493451;color:#fff}
+.panel{background:var(--panel);border:1px solid #392844;border-radius:18px;padding:18px;margin-top:18px}.packages{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.package{background:var(--panel2);padding:14px 8px;text-align:center;border-radius:14px}.package b{display:block;color:var(--gold);font-size:17px}.package small{color:var(--muted)}
+.note{font-size:12px;color:var(--muted)}.nav{position:fixed;bottom:0;left:0;right:0;background:#21172df2;border-top:1px solid #493451;display:flex;justify-content:center;gap:clamp(8px,5vw,55px);padding:10px;z-index:4}.nav button{background:transparent;color:#e9ddeb;padding:8px 10px}
+.toast{position:fixed;top:80px;left:50%;transform:translateX(-50%);background:#503153;border:1px solid #98608d;padding:11px 16px;border-radius:12px;display:none;z-index:8;max-width:90%;text-align:center}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.packages{grid-template-columns:repeat(2,1fr)}.hero{padding:26px 20px}.hero-mark{font-size:56px}}
+@media(max-width:390px){.nav{gap:2px}.nav button{font-size:11px;padding:7px 5px}.avatar{height:125px}}
+</style></head>
+<body>
+<header class="top"><div class="logo">♥ LOVEORA</div><div class="wallet">🪙 <span id="balance">20</span> coins</div></header>
+<main class="wrap">
+<section class="hero"><div><div class="eyebrow">One Europe. New connections.</div><h1>Meet. Chat.<br>Connect.</h1><p>Discover people, share good moments and make meaningful connections across Europe.</p><button onclick="document.querySelector('#discover').scrollIntoView({behavior:'smooth'})">Discover people</button></div><div class="hero-mark" aria-hidden="true">💗</div></section>
+<section id="discover"><h2>People you may like</h2><p class="muted">A sample preview with fictional demo profiles.</p><div class="grid" id="profiles">
+<article class="card"><div class="avatar">👩🏻</div><div class="info"><b>Sophia, 24</b><div class="city">Paris, France 🇫🇷</div><div class="actions"><button onclick="like(this)">♥ Like</button><button class="secondary" onclick="gift('Sophia')">🎁 Gift</button></div></div></article>
+<article class="card"><div class="avatar">👨🏻</div><div class="info"><b>Alex, 27</b><div class="city">Berlin, Germany 🇩🇪</div><div class="actions"><button onclick="like(this)">♥ Like</button><button class="secondary" onclick="gift('Alex')">🎁 Gift</button></div></div></article>
+<article class="card"><div class="avatar">👩🏽</div><div class="info"><b>Emma, 25</b><div class="city">Madrid, Spain 🇪🇸</div><div class="actions"><button onclick="like(this)">♥ Like</button><button class="secondary" onclick="gift('Emma')">🎁 Gift</button></div></div></article>
+<article class="card"><div class="avatar">👨🏽</div><div class="info"><b>Lucas, 26</b><div class="city">Rome, Italy 🇮🇹</div><div class="actions"><button onclick="like(this)">♥ Like</button><button class="secondary" onclick="gift('Lucas')">🎁 Gift</button></div></div></article>
+</div></section>
+<section class="panel"><h2 style="margin-top:0">🪙 Coin packages</h2><div class="packages"><div class="package"><b>100</b><small>€1.99</small></div><div class="package"><b>300</b><small>€4.99</small></div><div class="package"><b>700</b><small>€9.99</small></div><div class="package"><b>1,500</b><small>€19.99</small></div><div class="package"><b>4,000</b><small>€49.99</small></div></div><p class="note">Demo prices only. Purchases are not enabled. Never send money through this preview.</p></section>
+<section class="panel"><h2 style="margin-top:0">Welcome to Loveora</h2><p class="muted">A friendly place to meet and connect. This preview uses fictional demo profiles and a temporary demo coin balance. It does not create accounts, send real messages, or process payments.</p></section>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<nav class="nav"><button onclick="scrollTo({top:0,behavior:'smooth'})">⌂ Home</button><button onclick="document.querySelector('#discover').scrollIntoView({behavior:'smooth'})">♡ Discover</button><button onclick="notify('Messaging will be added after secure account setup.')">▤ Messages</button><button onclick="notify('Demo balance: '+coins+' coins. Purchases are not active.')">◉ Wallet</button><button onclick="notify('Profiles and sign-in are coming in the next build.')">☺ Profile</button></nav>
+<script>
+let coins=20;
+function notify(message){const el=document.getElementById('toast');el.textContent=message;el.style.display='block';clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.style.display='none',2600)}
+function update(){document.getElementById('balance').textContent=coins}
+function like(button){button.textContent='♥ Liked';button.disabled=true;notify('Like saved in this demo.')}
+function gift(person){if(coins<5){notify('Not enough demo coins.');return}coins-=5;update();notify('A demo gift was sent to '+person+'.')}
+</script></body></html>
